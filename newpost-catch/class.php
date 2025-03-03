@@ -107,9 +107,9 @@ if ( ! class_exists('NewpostCatch') ) {
 				$post_type	= apply_filters( 'NewpostCatch_widget_post_type', 'post' );
 			}
 
-			echo esc_html( $before_widget );
+			echo wp_kses_post( $before_widget );
 
-			if ( $title ) echo esc_html( $before_title . $title . $after_title );
+			if ( $title ) echo wp_kses_post( $before_title . $title . $after_title );
 
 			$sticky_posts = get_option( 'sticky_posts' );
 
@@ -157,7 +157,7 @@ if ( ! class_exists('NewpostCatch') ) {
 								</figure>
 								<div class="detail">
 									<span class="title"><?php echo esc_html( $post_title ); ?></span>
-									<?php echo esc_html( $post_date ); ?>
+									<?php echo wp_kses_post( $post_date ); ?>
 								</div>
 							</a>
 						</li>
@@ -169,7 +169,7 @@ if ( ! class_exists('NewpostCatch') ) {
 				<?php endif; wp_reset_postdata(); ?>
 				</ul>
 			<?php
-			echo esc_html( $after_widget );
+			echo wp_kses_post( $after_widget );
 		}
 
 		/** @see WP_Widget::update **/
